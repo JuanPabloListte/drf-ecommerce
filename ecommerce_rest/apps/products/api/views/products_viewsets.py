@@ -8,6 +8,7 @@ from rest_framework import viewsets
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
+    
     def get_queryset(self, pk=None):
         if pk is None:
             return self.get_serializer().Meta.model.objects.filter(state=True)
