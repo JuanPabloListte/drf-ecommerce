@@ -7,17 +7,18 @@ from django.contrib.sessions.models import Session
 from datetime import datetime
 from rest_framework.views import APIView
 from django.utils import timezone
+from apps.users.authentication_mixins import Authentication
 
 
-class UserToken(APIView):
+class UserToken(Authentication, APIView):
     def get(self, request, *args, **kwargs):
-        username = request.GET.get('username')
+        
         try:
-            user_token = Token.objects.get(
-                user = UserTokenSerializer().Meta.model.objects.filter(username = username).first()
-            )
+            user_token,_ = Token.objects.get_or_create(user = self.user)
+            user = UserTokenSerializer(self.user)
             return Response({
-                'token': user_token.key
+                'token': user_token.key,
+                'user': user.data,
             })
         except:
             return Response({
@@ -41,23 +42,22 @@ class Login(ObtainAuthToken):
                             'message': 'Login succesfully!'
                     }, status=status.HTTP_201_CREATED)
                 else:
+                    all_sessions = Session.objects.filter(expire_date__gte=datetime.now())
+                    if all_sessions.exists():
+                        for session in all_sessions:
+                            session_data = session.get_decoded()
+                            if user.id == int(session_data.get('_auth_user_id')):
+                                session.delete()
                     token.delete()
+                    token = Token.objects.create(user=user)
                     return Response({
-                        'error': 'Session already started with this user'
-                    }, status=status.HTTP_409_CONFLICT)
-                    # all_sessions = Session.objects.filter(expire_date__gte=datetime.now())
-                    # if all_sessions.exists():
-                    #     for session in all_sessions:
-                    #         session_data = session.get_decoded()
-                    #         if user.id == int(session_data.get('_auth_user_id')):
-                    #             session.delete()
-                    # token.delete()
-                    # token = Token.objects.create(user=user)
+                            'token': token.key,
+                            'user': user_serializer.data,
+                            'message': 'Login succesfully!'
+                    }, status=status.HTTP_201_CREATED)
                     # return Response({
-                    #         'token': token.key,
-                    #         'user': user_serializer.data,
-                    #         'message': 'Login succesfully!'
-                    # }, status=status.HTTP_201_CREATED)
+                    #     'error': 'Session already started with this user'
+                    # }, status=status.HTTP_409_CONFLICT)
             else:
                 return Response({'error': 'This account is inactive'}, status=status.HTTP_401_UNAUTHORIZED)
         else:

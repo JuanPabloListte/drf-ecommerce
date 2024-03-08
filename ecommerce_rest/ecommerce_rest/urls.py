@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('apps.users.api.urls')),
     path('login/', Login.as_view(), name="login"),
-    path('refresh_token/', UserToken.as_view(), name="refresh_token"),
+    path('refresh-token/', UserToken.as_view(), name="refresh_token"),
     path('logout/', Logout.as_view(), name="logout"),
     path('products/', include('apps.products.api.routers')),
 ]
