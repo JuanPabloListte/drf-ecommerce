@@ -1,13 +1,10 @@
-from rest_framework import generics
-from apps.base.api import GeneralListAPIView
 from apps.products.api.serializers.product_serializer import ProductSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
-from apps.users.authentication_mixins import Authentication
 
 
-class ProductViewSet(Authentication, viewsets.ModelViewSet):
+class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     
     def get_queryset(self, pk=None):
@@ -17,6 +14,8 @@ class ProductViewSet(Authentication, viewsets.ModelViewSet):
     
     
     def list(self, request):
+        for key, value in request.__dict__.items():
+            print(key, '==', value)
         product_serializer = self.get_serializer(self.get_queryset(), many=True)
         return Response(product_serializer.data, status=status.HTTP_200_OK)
 
