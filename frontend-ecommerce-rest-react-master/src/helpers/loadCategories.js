@@ -2,9 +2,10 @@ import { types } from '../types/types';
 import { fetchWithToken } from './fetch';
 
 export const loadCategories = async() => {
-    const response = await fetchWithToken('products/category-products/');
+    const response = await fetchWithToken('products/category_products/');
     const body = await response.json();
     const categories = {}    
+    
 
     const data = [];
 

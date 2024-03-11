@@ -31,7 +31,7 @@ export const Table = ( { title, optionalText, columns, rows } ) => {
                                                 <th>{ column }</th>
                                             )
                                         }
-                                        <th>Opciones</th>
+                                        <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +47,7 @@ export const Table = ( { title, optionalText, columns, rows } ) => {
                                                         data-target="#modalCategoryEdition"
                                                         onClick={ () => dispatch( activateCategoryProduct(item) ) }
                                                     >
-                                                        EDITAR
+                                                        EDIT
                                                     </button>
                                                     <button 
                                                         className="btn btn-danger"
@@ -55,7 +55,7 @@ export const Table = ( { title, optionalText, columns, rows } ) => {
                                                         data-target="#modalDeleteCategory"
                                                         onClick={ () => dispatch( activateCategoryProduct(item) ) }
                                                     >
-                                                        ELIMINAR
+                                                        DELETE
                                                     </button>
                                                 </td>
                                             </tr>

@@ -53,7 +53,7 @@ export const CategoryScreen = () => {
             </button>  
 
             <Table 
-                title="Listado de Categorias de Productos"
+                title="Category Product List"
                 optionalText=""
                 columns={ columns } 
                 rows={ rows } 
