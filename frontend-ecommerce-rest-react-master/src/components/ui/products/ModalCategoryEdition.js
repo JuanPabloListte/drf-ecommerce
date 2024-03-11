@@ -11,7 +11,7 @@ export const ModalCategoryEdition = () => {
 
     const id_category_product = useRef( category_product.id );
     const { description } = formValues;
-
+    
     useEffect(() => {
 
         if ( category_product.id !== id_category_product.current ) {
@@ -45,12 +45,12 @@ export const ModalCategoryEdition = () => {
                                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div className="modal-body">
-                                    <h2>Edicion de Categoria { category_product.description }</h2>
-                                    <p>Ingrese la nueva informacion de la Categoria de Productos.</p>
+                                    <h2>Category Edit { category_product.description }</h2>
+                                    <p>Add the new Product Category information.</p>
                                     <div className="form-group">
                                         <div className="row">
                                             <div className="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                                <label className="hrzn-fm">Nombre de la Categoria</label>
+                                                <label className="hrzn-fm">Category Name</label>
                                             </div>
                                             <div className="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                                 <div className="nk-int-st">
@@ -58,7 +58,7 @@ export const ModalCategoryEdition = () => {
                                                         type="text" 
                                                         name = "description" 
                                                         className="form-control input-sm" 
-                                                        placeholder="Ingrese el nombre de la Categoria"
+                                                        placeholder="Add the category name"
                                                         onChange={ handleInputChange }
                                                         value = { description }
                                                     />
@@ -72,14 +72,14 @@ export const ModalCategoryEdition = () => {
                                         type="submit" 
                                         className="btn btn-primary" 
                                     >
-                                        Guardar
+                                        Save
                                     </button>
                                     <button 
                                         type="button" 
                                         className="btn btn-danger" 
                                         data-dismiss="modal"
                                     >
-                                        Cancelar
+                                        Cancel
                                     </button>
                                 </div>
                             </div>

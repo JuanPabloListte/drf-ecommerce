@@ -9,7 +9,7 @@ export const registerCategory = ( { description } ) => {
     return async(dispatch) =>{
         
         const response = await fetchWithToken( 
-                                    'products/category-products/',
+                                    'products/category_product/',
                                     { description }, 
                                     'POST' );
         const body = await response.json();
@@ -17,7 +17,7 @@ export const registerCategory = ( { description } ) => {
 
         if ( response.status === 201 ){
 
-            notification("Felicidades",body.message,'success');
+            notification("Congratulations",body.message,'success');
 
         }else{
 
@@ -33,7 +33,7 @@ export const updateCategory = ( formValues ) => {
     return async(dispatch) =>{
 
         const response = await fetchWithToken( 
-                                    `products/category-products/${ formValues.id }/`,
+                                    `products/category_product/${ formValues.id }/`,
                                     {'description': formValues.description}, 
                                     'PUT' );
         
@@ -44,7 +44,7 @@ export const updateCategory = ( formValues ) => {
             
             dispatch( eventLoaded( await loadCategories() ) ); 
             document.getElementById("buttonUpdate").click();  
-            notification("Felicidades",body.message,'success');
+            notification("Congratulations",body.message,'success');
         
         }else{
             
@@ -60,7 +60,7 @@ export const deleteCategory = ( id ) => {
     return async(dispatch) =>{
 
         const response = await fetchWithToken( 
-                                    `products/category-products/${ id.current }/`, 
+                                    `products/category_product/${ id.current }/`, 
                                     "",
                                     'DELETE' 
                                 );
@@ -72,7 +72,7 @@ export const deleteCategory = ( id ) => {
             
             dispatch( eventLoaded( await loadCategories() ) ); 
             document.getElementById("buttonDelete").click();  
-            notification("Felicidades",body.message,'success');
+            notification("Congratulations",body.message,'success');
         
         }else{
             

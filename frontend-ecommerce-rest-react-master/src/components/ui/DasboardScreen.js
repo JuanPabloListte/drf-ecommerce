@@ -31,7 +31,7 @@ export const DasboardScreen = () => {
                                 <Route exact path="/products"></Route>
                                 <PrivateRoute 
                                     exact 
-                                    path="/products/category-products" 
+                                    path="/products/category_product" 
                                     component = { CategoryScreen } 
                                     isAuthenticated = { !!token }
                                 />      

@@ -41,7 +41,8 @@ export const Table = ( { title, optionalText, columns, rows } ) => {
                                                 <td>{ item.id }</td>
                                                 <td>{ item.description }</td>
                                                 <td>
-                                                    <button 
+                                                    <button
+                                                        style={{ marginRight: 5 }}
                                                         className="btn btn-primary"
                                                         data-toggle="modal" 
                                                         data-target="#modalCategoryEdition"
