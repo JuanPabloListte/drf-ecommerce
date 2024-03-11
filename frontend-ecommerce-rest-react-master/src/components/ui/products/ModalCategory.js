@@ -56,14 +56,14 @@ export const ModalCategory = () => {
                                         type="submit" 
                                         className="btn btn-primary" 
                                     >
-                                        Registrar
+                                        Register
                                     </button>
                                     <button 
                                         type="button" 
                                         className="btn btn-danger" 
                                         data-dismiss="modal"
                                     >
-                                        Cancelar
+                                        Cancel
                                     </button>
                                 </div>
                             </div>

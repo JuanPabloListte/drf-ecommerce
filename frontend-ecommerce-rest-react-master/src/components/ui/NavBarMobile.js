@@ -10,14 +10,14 @@ export const NavBarMobile = () => {
                             <div className="mobile-menu">
                                 <nav id="dropdown">
                                     <ul className="mobile-menu-nav">
-                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">Inicio</a>
+                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">Home</a>
                                             <ul className="collapse dropdown-header-top">
                                                 <li><a href="index.html">Dashboard</a></li>
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">Perfil de Usuario</a>
+                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">User</a>
                                             <ul className="collapse dropdown-header-top">
-                                                <li><a href="index.html">Perfil</a></li>
+                                                <li><a href="index.html">User Profile</a></li>
                                             </ul>
                                         </li>
                                     </ul>

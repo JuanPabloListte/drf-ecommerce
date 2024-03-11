@@ -11,7 +11,7 @@ router = DefaultRouter()
 router.register(r'products',ProductViewSet, basename = 'products')
 router.register(r'measure_unit', MeasureUnitViewSet, basename='measure_unit')
 router.register(r'indicators', IndicatorViewSet, basename='indicators')
-router.register(r'category_products', CategoryProductViewSet, basename='category_products')
+router.register(r'category_product', CategoryProductViewSet, basename='category_product')
 
 
 urlpatterns = router.urls

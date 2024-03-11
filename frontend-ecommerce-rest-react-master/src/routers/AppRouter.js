@@ -56,7 +56,7 @@ export const AppRouter = () => {
                 />
                 <PrivateRoute 
                     exact 
-                    path="/products/category-products" 
+                    path="/products/category_product" 
                     component = { DasboardScreen } 
                     isAuthenticated = { !!token }
                 />  
