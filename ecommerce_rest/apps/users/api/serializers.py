@@ -37,6 +37,10 @@ class UserListSerializer(serializers.ModelSerializer):
             'id':instance['id'],
             'username':instance['username'],
             'email':instance['email'],
-            'encrypted password':instance['password']
+            'name': instance['name']
         }
         
+class UpdateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'name', 'last_name')
