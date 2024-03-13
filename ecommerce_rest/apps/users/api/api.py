@@ -1,9 +1,10 @@
 from rest_framework import viewsets
-from apps.users.api.serializers import UserSerializer, UserListSerializer, UpdateUserSerializer
+from apps.users.api.serializers import UserSerializer, UserListSerializer, UpdateUserSerializer, PasswordSerializer
 from apps.users.models import User
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404 
 from rest_framework import status
+from rest_framework.decorators import action
 
 
 class UserViewSet(viewsets.GenericViewSet):
@@ -57,6 +58,16 @@ class UserViewSet(viewsets.GenericViewSet):
             return Response({'message': 'User deleted successfully'})
         return Response({'message':'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
+    @action(detail=True, methods=['POST'])
+    def set_password(self, request, pk=None):
+        user = self.get_object(pk)
+        password_serializer = PasswordSerializer(data=request.data)
+        if password_serializer.is_valid():
+            user.set_password(password_serializer.validated_data['password'])
+            user.save()
+            return Response({'message': 'Password updated successfully'}, status=status.HTTP_200_OK)
+        return Response({'message': 'Invalid password',
+                         'errors': password_serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 # @api_view(['GET', 'POST'])
 # def user_api_view(request):
