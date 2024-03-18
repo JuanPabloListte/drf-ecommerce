@@ -29,7 +29,7 @@ function updateProduct(){
 }
 
 function loadCategories(id=0){
-    fetch(base_API + 'products/category-products/get_categories/',{
+    fetch(base_API + 'category_product/get_categories/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
