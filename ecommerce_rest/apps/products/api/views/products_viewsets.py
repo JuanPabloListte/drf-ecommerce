@@ -1,4 +1,4 @@
-from apps.products.api.serializers.product_serializer import ProductSerializer
+from apps.products.api.serializers.product_serializer import ProductSerializer, ProductRetrieveSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
@@ -15,10 +15,13 @@ class ProductViewSet(viewsets.ModelViewSet):
     
     
     def list(self, request):
-        for key, value in request.__dict__.items():
-            print(key, '==', value)
         product_serializer = self.get_serializer(self.get_queryset(), many=True)
-        return Response(product_serializer.data, status=status.HTTP_200_OK)
+        data = {
+            "total": self.get_queryset().count(),
+            "totalNotFiltered": self.get_queryset().count(),
+            "rows": product_serializer.data
+        }
+        return Response(data, status=status.HTTP_200_OK)
 
     
     def create(self, request):
@@ -30,14 +33,21 @@ class ProductViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
+    def retrieve(self, request, pk=None):
+        product = self.get_queryset(pk)
+        if product:
+            product_serializer = ProductRetrieveSerializer(product)
+            return Response(product_serializer.data, status=status.HTTP_200_OK)
+        return Response({'error':'There is no product with this data!'}, status=status.HTTP_400_BAD_REQUEST)
+
     def update(self, request, pk=None):
         if self.get_queryset(pk):
             data = validate_files(request.data, 'image', True)
-            product_serializer = self.serializer_class(self.get_queryset(pk), data)
+            product_serializer = self.serializer_class(self.get_queryset(pk), data=data)            
             if product_serializer.is_valid():
                 product_serializer.save()
-                return Response(product_serializer.data, status=status.HTTP_200_OK)
-            return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'message':'Product updated successfully!'}, status=status.HTTP_200_OK)
+            return Response({'message':'', 'error':product_serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
     def destroy(self, request, pk=None):
         product = self.get_queryset().filter(id=pk).first()

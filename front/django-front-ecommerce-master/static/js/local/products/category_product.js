@@ -1,13 +1,13 @@
 var update_id = 0;
 
 function addCategoryProduct(){ 
-    fetchCreateUpdate('products/category-products/', {
+    fetchCreateUpdate('products/category_product/', {
         'description': document.getElementById('description').value
     });
 }
 
 function updateCategoryProduct(){
-    let url = 'products/category-products/' + update_id + "/"
+    let url = 'products/category_product/' + update_id + "/"
     fetchCreateUpdate(url, {
         'description': document.getElementById('id_description').value
     }, true);
@@ -16,7 +16,7 @@ function updateCategoryProduct(){
 window.actionEvents = {
     'click .btn-secondary': function(e, value, row, index){
         update_id = row.id;
-        fetch(base_API + 'products/category-products/'+row.id+"/",{
+        fetch(base_API + 'products/category_product/'+row.id+"/",{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,6 +37,6 @@ window.actionEvents = {
         });
     },
     'click .btn-danger': function(e, value, row, index){
-        fetchDelete('products/category-products/' + row.id + "/");
+        fetchDelete('products/category_product/' + row.id + "/");
     }
 }
