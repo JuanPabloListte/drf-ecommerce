@@ -21,6 +21,9 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     
     def create(self, request):
+        request.data._mutable = True
+        data = request.data
+        data['image'] = None if type(data['image']) == str else data['image']
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save()
