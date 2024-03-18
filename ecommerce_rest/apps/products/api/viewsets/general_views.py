@@ -1,5 +1,5 @@
 from rest_framework.decorators import action
-from apps.products.api.serializers.general_serializers import MeasureUnitSerializer, IndicatorSerializer, CategoryProductSerializer
+from apps.products.api.serializers.general_serializer import MeasureUnitSerializer, IndicatorSerializer, CategoryProductSerializer
 from rest_framework import viewsets, status
 from rest_framework.response import Response 
 from apps.products.models import Indicator, MeasureUnit, CategoryProduct

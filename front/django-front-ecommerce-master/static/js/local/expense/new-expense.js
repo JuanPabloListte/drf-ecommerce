@@ -16,15 +16,15 @@ function hideForm(){
 
 function searchSupplier(){
     let error = false;
-    let ruc = document.getElementById('ruc_or_business_name').value;
+    let cuil = document.getElementById('cuil_or_business_name').value;
 
-    if(ruc === ''){
-        alert('Debe ingresar un RUC.')
+    if(cuil === ''){
+        alert('Debe ingresar un CUIL.')
     }else{
         let found = document.getElementById('supplier_found');
         found.classList.remove('hide');
         
-        fetch(base_API + 'expense/expense/search_supplier/?ruc_or_business_name='+ruc,{
+        fetch(base_API + 'expense/expense/search_supplier/?cuil_or_business_name='+cuil,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function searchSupplier(){
                 showForm();
                 id_supplier = data.id;
                 document.getElementById('id_business_name').innerHTML = data.business_name;
-                document.getElementById('ruc').innerHTML = data.ruc;
+                document.getElementById('cuil').innerHTML = data.cuil;
                 document.getElementById('id_address').innerHTML = data.address;
             }
 
@@ -147,7 +147,7 @@ function loadProducts(){
 
 function addNewSupplier(){
     let data = {
-        'ruc': document.getElementById('new_ruc').value,
+        'cuil': document.getElementById('new_cuil').value,
         'business_name': document.getElementById('new_business_name').value,
         'address': document.getElementById('new_address').value,
         'phone': document.getElementById('new_phone').value,
@@ -181,7 +181,7 @@ function addNewSupplier(){
             let found = document.getElementById('supplier_found');
             found.classList.remove('hide');
             document.getElementById('id_business_name').innerHTML = data.supplier.business_name;
-            document.getElementById('ruc').innerHTML = data.supplier.ruc;
+            document.getElementById('cuil').innerHTML = data.supplier.cuil;
             document.getElementById('id_address').innerHTML = data.supplier.address;
             //alert(data.message);
             hideErrors();

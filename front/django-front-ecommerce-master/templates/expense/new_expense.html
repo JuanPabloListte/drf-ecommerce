@@ -21,8 +21,8 @@
                     <i class="notika-icon notika-edit"></i>
                 </div>
                 <div class="nk-int-st">
-                    <input type="text" class="form-control" placeholder="CUIL o Razón Social" name="ruc_or_business_name"
-                        id="ruc_or_business_name">
+                    <input type="text" class="form-control" placeholder="CUIL o Razón Social" name="cuil_or_business_name"
+                        id="cuil_or_business_name">
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="breadcomb-ctn">
                     <h2 id="id_business_name">Felipe Perez</h2>
-                    <p><span class="bread-ntd" id="ruc"></span> - <span class="bread-ntd" id="id_address"></span></p>
+                    <p><span class="bread-ntd" id="cuil"></span> - <span class="bread-ntd" id="id_address"></span></p>
                 </div>
             </div>
         </div>
@@ -206,8 +206,8 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="name">CUIL</label>
-                        <input type="text" class="form-control" id="new_ruc" name="ruc" placeholder="CUIL" required>
-                        <p id="ruc_error" class="error"></p>
+                        <input type="text" class="form-control" id="new_cuil" name="cuil" placeholder="CUIL" required>
+                        <p id="cuil_error" class="error"></p>
                     </div>
                     <div class="form-group">
                         <label for="description">Razón Social</label>

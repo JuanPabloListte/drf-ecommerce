@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.products.api.views.general_views import MeasureUnitListAPIView, CategoryProductListAPIView, IndicatorListAPIView
+from apps.products.api.viewsets.general_views import MeasureUnitListAPIView, CategoryProductListAPIView, IndicatorListAPIView
 
 
 urlpatterns = [
