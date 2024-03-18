@@ -1,4 +1,4 @@
-from apps.base.api import GeneralListAPIView
+from rest_framework.decorators import action
 from apps.products.api.serializers.general_serializers import MeasureUnitSerializer, IndicatorSerializer, CategoryProductSerializer
 from rest_framework import viewsets, status
 from rest_framework.response import Response 
@@ -42,6 +42,12 @@ class MeasureUnitViewSet(viewsets.GenericViewSet):
         return Response({'message':'', 'error':'Measure Unit not found!'}, status=status.HTTP_400_BAD_REQUEST)
     
 
+    @action(detail=False, methods=['get'])
+    def get_measure_units(self, request):
+        data = MeasureUnit.objects.filter(state=True)
+        data = MeasureUnitSerializer(data, many=True)
+        return Response(data.data)
+    
 class IndicatorViewSet(viewsets.GenericViewSet):
     serializer_class = IndicatorSerializer
     model = Indicator
@@ -124,3 +130,8 @@ class CategoryProductViewSet(viewsets.GenericViewSet):
             return Response({'message':'Category deleted successfully!'}, status=status.HTTP_200_OK)       
         return Response({'message':'', 'error':'Category not found!'}, status=status.HTTP_400_BAD_REQUEST)
     
+    @action(detail=False, methods=['get'])
+    def get_categories(self, request):
+        data = CategoryProduct.objects.filter(state=True)
+        data = CategoryProductSerializer(data, many=True)
+        return Response(data.data)

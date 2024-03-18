@@ -1,13 +1,13 @@
 var update_id = 0;
 
 function addMeasureUnit(){ 
-    fetchCreateUpdate('measure_unit/', {
+    fetchCreateUpdate('products/measure_unit/', {
         'description': document.getElementById('description').value
     });
 }
 
 function updateMeasureUnit(){
-    let url = 'measure_unit/' + update_id + "/"
+    let url = 'products/measure_unit/' + update_id + "/"
     fetchCreateUpdate(url, {
         'description': document.getElementById('id_description').value
     }, true);
@@ -16,7 +16,7 @@ function updateMeasureUnit(){
 window.actionEvents = {
     'click .btn-secondary': function(e, value, row, index){
         update_id = row.id;
-        fetch(base_API + 'measure_unit/'+row.id+"/",{
+        fetch(base_API + 'products/measure_unit/'+row.id+"/",{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,6 +37,6 @@ window.actionEvents = {
         });
     },
     'click .btn-danger': function(e, value, row, index){
-        fetchDelete('measure_unit/' + row.id + "/");
+        fetchDelete('products/measure_unit/' + row.id + "/");
     }
 }
