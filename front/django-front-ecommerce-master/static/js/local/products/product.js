@@ -65,7 +65,7 @@ function loadCategories(id=0){
 }
 
 function loadMeasureUnits(id=0){
-    fetch(base_API + 'products/measure-unit/get_measure_units/',{
+    fetch(base_API + 'products/measure_unit/get_measure_units/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

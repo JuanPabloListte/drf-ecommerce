@@ -2,6 +2,7 @@ from apps.products.api.serializers.product_serializer import ProductSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from apps.base.utils import validate_files
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -21,10 +22,8 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     
     def create(self, request):
-        request.data._mutable = True
-        data = request.data
-        data['image'] = None if type(data['image']) == str else data['image']
-        serializer = self.serializer_class(data=request.data)
+        data = validate_files(request.data, 'image')
+        serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response({'message':'Product created successfully!'}, status=status.HTTP_201_CREATED)
@@ -33,7 +32,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     
     def update(self, request, pk=None):
         if self.get_queryset(pk):
-            product_serializer = self.serializer_class(self.get_queryset(pk), data=request.data)
+            data = validate_files(request.data, 'image', True)
+            product_serializer = self.serializer_class(self.get_queryset(pk), data)
             if product_serializer.is_valid():
                 product_serializer.save()
                 return Response(product_serializer.data, status=status.HTTP_200_OK)
