@@ -3,13 +3,14 @@
 {% load static %}
 
 {% block body %}
+
 <div class="normal-table-list">
     <div class="basic-tb-hd">
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-8">
-                    <h2>Registro de Facturas</h2>
-                    <p>Debe ingresar el número de CUIL o la Razón Social del Proveedor para continuar.</p>
+                    <h2>Invoice Registration</h2>
+                    <p>You must enter the CUIL number or the Business Name of the Supplier to proceed.</p>
                 </div>
             </div>
         </div>
@@ -21,20 +22,21 @@
                     <i class="notika-icon notika-edit"></i>
                 </div>
                 <div class="nk-int-st">
-                    <input type="text" class="form-control" placeholder="CUIL o Razón Social" name="ruc_or_business_name"
-                        id="ruc_or_business_name">
+                    <input type="text" class="form-control" placeholder="CUIL or Business Name" name="cuil_or_business_name"
+                        id="cuil_or_business_name">
                 </div>
             </div>
         </div>
         <div class="col-lg-2 col-sm-2">
-            <button type="button" class="btn btn-primary" onclick="searchSupplier();">Buscar</button>
+            <button type="button" class="btn btn-primary" onclick="searchSupplier();">Search</button>
         </div>
         <div class="col-lg-2 col-sm-2">
             <button type="button" class="btn btn-primary" id="id_new_supplier" data-toggle="modal"
-                data-target="#creationModal">Registrar</button>
+                data-target="#creationModal">Register</button>
         </div>
     </div>
 </div>
+
 
 
 <div class="breadcomb-list hide" id="supplier_found">
@@ -46,24 +48,25 @@
                 </div>
                 <div class="breadcomb-ctn">
                     <h2 id="id_business_name">Felipe Perez</h2>
-                    <p><span class="bread-ntd" id="ruc"></span> - <span class="bread-ntd" id="id_address"></span></p>
+                    <p><span class="bread-ntd" id="cuil"></span> - <span class="bread-ntd" id="id_address"></span></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
 <div id="expense_form" class="row hide">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="form-example-wrap mg-t-30">
             <div class="cmp-tb-hd cmp-int-hd">
-                <h2>Nueva Factura</h2>
+                <h2>New Invoice</h2>
             </div>
             <div class="form-example-int form-horizental mg-t-15">
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Número Factura</label>
+                            <label class="hrzn-fm">Invoice Number</label>
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
@@ -78,7 +81,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Fecha de Emisión</label>
+                            <label class="hrzn-fm">Issuance Date</label>
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
@@ -93,101 +96,102 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Producto</label>
+                            <label class="hrzn-fm">Product</label>
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                            <select id="product" name="product" class="form-control"
-                                data-placeholder="Seleccione un Producto..." >
+                            <select id="product" name="product" class="form-control" data-placeholder="Select a Product...">
                             </select>
                             <p id="product_error" class="error"></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-example-int form-horizental mg-t-15">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Tipo de Comprobante</label>
-                        </div>
-                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                            <select class="form-control" name="voucher" id="voucher"
-                                data-placeholder="Seleccione un Tipo de Comprobante...">
-                            </select>
-                            <p id="voucher_error" class="error"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-example-int form-horizental mg-t-15">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Medio de Pago</label>
-                        </div>
-                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                            <select class="form-control" name="payment_type" id="payment_type"
-                                data-placeholder="Seleccione un Medio de Pago...">
-                            </select>
-                            <p id="payment_type_error" class="error"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-example-int form-horizental mg-t-15">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Cantidad</label>
-                        </div>
-                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                            <div class="nk-int-st">
-                                <input id="quantity" value="0" name="quantity" type="number" min="0"
-                                    class="form-control">
-                                    <p id="quantity_error" class="error"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-example-int form-horizental mg-t-15">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Precio Unitario</label>
-                        </div>
-                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                            <div class="nk-int-st">
-                                <input id="unit_price" value="0" name="unit_price" type="number" min="0"
-                                    class="form-control">
-                                    <p id="unit_price_error" class="error"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-example-int form-horizental mg-t-15">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Total</label>
-                        </div>
-                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                            <div class="nk-int-st">
-                                <input id="total" value="0" name="total" type="number" min="0" class="form-control">
-                                <p id="total_error" class="error"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-example-int mg-t-15">
+        </div>
+        
+        <div class="form-example-int form-horizental mg-t-15">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <label class="hrzn-fm">Invoice Type</label>
                     </div>
                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                        <button class="btn btn-success notika-btn-success waves-effect" onclick="addNewExpense();">Registrar</button>
+                        <select class="form-control" name="voucher" id="voucher"
+                            data-placeholder="Select an Invoice Type...">
+                        </select>
+                        <p id="voucher_error" class="error"></p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-example-int form-horizental mg-t-15">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <label class="hrzn-fm">Payment Method</label>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                        <select class="form-control" name="payment_type" id="payment_type"
+                            data-placeholder="Select a Payment Method...">
+                        </select>
+                        <p id="payment_type_error" class="error"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-example-int form-horizental mg-t-15">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <label class="hrzn-fm">Quantity</label>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                        <div class="nk-int-st">
+                            <input id="quantity" value="0" name="quantity" type="number" min="0"
+                                class="form-control">
+                                <p id="quantity_error" class="error"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-example-int form-horizental mg-t-15">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <label class="hrzn-fm">Unit Price</label>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                        <div class="nk-int-st">
+                            <input id="unit_price" value="0" name="unit_price" type="number" min="0"
+                                class="form-control">
+                            <p id="unit_price_error" class="error"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-example-int form-horizental mg-t-15">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <label class="hrzn-fm">Total</label>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                        <div class="nk-int-st">
+                            <input id="total" value="0" name="total" type="number" min="0" class="form-control">
+                            <p id="total_error" class="error"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-example-int mg-t-15">
+            <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                </div>
+                <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                    <button class="btn btn-success notika-btn-success waves-effect" onclick="addNewExpense();">Register</button>
                 </div>
             </div>
         </div>
@@ -201,47 +205,48 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>Registro de un Proveedor</h2>
+                <h2>Supplier Registration</h2>
                 <form method="POST" id="creation_form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="name">CUIL</label>
-                        <input type="text" class="form-control" id="new_ruc" name="ruc" placeholder="CUIL" required>
-                        <p id="ruc_error" class="error"></p>
+                        <input type="text" class="form-control" id="new_cuil" name="cuil" placeholder="CUIL" required>
+                        <p id="cuil_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="description">Razón Social</label>
+                        <label for="description">Business Name</label>
                         <input name="business_name" id="new_business_name" class="form-control"
-                            placeholder="Razón Social" cols="20" rows="5" required>
+                            placeholder="Business Name" cols="20" rows="5" required>
                         <p id="business_name_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="description">Dirección</label>
-                        <input type="text" class="form-control" id="new_address" name="address" placeholder="Dirección"
+                        <label for="description">Address</label>
+                        <input type="text" class="form-control" id="new_address" name="address" placeholder="Address"
                             required>
                         <p id="address_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="description">Teléfono</label>
-                        <input type="text" class="form-control" id="new_phone" name="phone" placeholder="Teléfono">
+                        <label for="description">Phone</label>
+                        <input type="text" class="form-control" id="new_phone" name="phone" placeholder="Phone">
                         <p id="phone_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="description">Correo Electrónico</label>
+                        <label for="description">Email</label>
                         <input type="email" class="form-control" id="new_email" name="email"
-                            placeholder="Correo Electrónico">
+                            placeholder="Email">
                         <p id="email_error" class="error"></p>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="addNewSupplier();">Registrar</button>
-                <button type="button" class="btn btn-danger" onclick="closeCreationModal();">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="addNewSupplier();">Register</button>
+                <button type="button" class="btn btn-danger" onclick="closeCreationModal();">Cancel</button>
                 <button id="close_modal_creation" type="button" hidden data-dismiss="modal">Hide</button>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock body %}
 

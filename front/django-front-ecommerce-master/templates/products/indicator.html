@@ -13,13 +13,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-8">
-                    <h2>Listado de Indicadores</h2>
-                    <p>Indicadores registrados disponibles.</p>
+                    <h2>Indicators List</h2>
+                    <p>Available registered indicators.</p>
                 </div>
                 <div class="col-lg-4">
                     <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal"
                         data-target="#creationModal">
-                        Agregar
+                        Add
                     </button>
                 </div>
             </div>
@@ -39,17 +39,18 @@
             <thead>
                 <tr>
                     <th data-field="id" data-visible="false">ID</th>
-                    <th data-field="descount_value">Descuento</th>
-                    <th data-field="category_product">Categoria</th>
+                    <th data-field="descount_value">Discount</th>
+                    <th data-field="category_product">Category</th>
                     <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents"
                         data-footer-formatter="footerFormatter">
-                        Acciones
+                        Actions
                     </th>
                 </tr>
             </thead>
         </table>
     </div>
 </div>
+
 
 <div class="modal fade" id="creationModal" role="dialog">
     <div class="modal-dialog modals-default">
@@ -58,17 +59,17 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>Registro de un Indicador</h2>
+                <h2>Indicator Registration</h2>
                 <form method="POST" id="creation_form">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="descount_value">Descuento</label>
+                        <label for="descount_value">Discount</label>
                         <input type="number" class="form-control" id="descount_value" name="descount_value"
-                            placeholder="Descuento" value="0" min="0">
+                            placeholder="Discount" value="0" min="0">
                         <p id="descount_value_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="descount_value">Categoría</label>
+                        <label for="descount_value">Category</label>
                         <select class="form-control" name="category_product" id="id_category_product">                            
                         </select>
                         <p id="category_product_error" class="error"></p>
@@ -76,8 +77,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="addIndicator();">Registrar</button>
-                <button type="button" class="btn btn-danger" onclick="closeCreationModal();">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="addIndicator();">Register</button>
+                <button type="button" class="btn btn-danger" onclick="closeCreationModal();">Cancel</button>
                 <button id="close_modal_creation" type="button" hidden data-dismiss="modal">Hide</button>
             </div>
         </div>
@@ -92,17 +93,17 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>Edición de Indicador <span id="categoria"></span> </h2>
+                <h2>Edit Indicator <span id="categoria"></span> </h2>
                 <form method="POST" id="update_form">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="descount_value">Descuento</label>
-                        <input type="number" class="form-control" id="id_descount_value" name="descount_value" placeholder="Descuento"
+                        <label for="descount_value">Discount</label>
+                        <input type="number" class="form-control" id="id_descount_value" name="descount_value" placeholder="Discount"
                             value="0" min="0">
                         <p id="descount_value_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="descount_value">Categoría</label>
+                        <label for="descount_value">Category</label>
                         <select class="form-control" name="category_product" id="id_category_product">
                         </select>
                         <p id="category_product_error" class="error"></p>
@@ -110,13 +111,14 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="updateIndicator();">Editar</button>
-                <button type="button" class="btn btn-danger" onclick="closeUpdateModal();">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="updateIndicator();">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="closeUpdateModal();">Cancel</button>
                 <button id="close_modal_update" type="button" hidden data-dismiss="modal">Hide</button>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock body %}
 
 {% block extra_js %}

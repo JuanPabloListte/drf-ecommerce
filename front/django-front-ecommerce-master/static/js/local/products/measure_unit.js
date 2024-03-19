@@ -32,7 +32,7 @@ window.actionEvents = {
             document.getElementById('openUpdateModal').click();
         })
         .catch(function(error){
-            console.log("RESPUESTA EN CATCH");
+            console.log("RESPONSE IN CATCH");
             console.log(error);
         });
     },

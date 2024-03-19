@@ -4,7 +4,7 @@ from apps.base.models import BaseModel
 
 
 class Supplier(BaseModel):
-    ruc = models.CharField(unique=True, max_length=11)
+    cuil = models.CharField(unique=True, max_length=11)
     business_name = models.CharField('Business Name', unique=True, max_length=150, null=False, blank=False)
     address = models.CharField(max_length=200)
     phone = models.CharField(max_length=15, null=True, blank=True)
@@ -21,7 +21,7 @@ class Supplier(BaseModel):
     def to_dict(self):
         return {
             'id': self.id,
-            'ruc': self.ruc,
+            'cuil': self.cuil,
             'business_name': self.business_name,
             'address': self.address,
             'phone': self.phone,

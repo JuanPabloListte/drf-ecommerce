@@ -13,13 +13,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-8">
-                    <h2>Listado de Productos</h2>
-                    <p>Productos registrados disponibles.</p>
+                    <h2>Product Listing</h2>
+                    <p>Registered products available.</p>
                 </div>
                 <div class="col-lg-4">
                     <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal"
                         data-target="#creationModal">
-                        Agregar
+                        Add
                     </button>
                 </div>
             </div>
@@ -40,19 +40,20 @@
             <thead>
                 <tr>
                     <th data-field="id" data-visible="false">ID</th>
-                    <th data-field="name">Nombre</th>
+                    <th data-field="name">Name</th>
                     <th data-field="stock">Stock</th>
-                    <th data-field="description">Descripción</th>
-                    <th data-field="measure_unit">Unidad de Medida</th>
-                    <th data-field="category_product">Categoría</th>
+                    <th data-field="description">Description</th>
+                    <th data-field="measure_unit">Measurement Unit</th>
+                    <th data-field="category_product">Category</th>
                     <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents"
                         data-footer-formatter="footerFormatter">
-                        Acciones
+                        Actions
                     </th>
                 </tr>
             </thead>
         </table>
     </div>
+    
 </div>
 
 <div class="modal fade" id="creationModal" role="dialog">
@@ -62,33 +63,33 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>Registro de un Producto</h2>
+                <h2>Product Registration</h2>
                 <form method="POST" id="creation_form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                         <p id="name_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="description">Descripción</label>
-                        <textarea name="description" id="description" class="form-control" placeholder="Descripción" cols="20" rows="5"></textarea>
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" class="form-control" placeholder="Description" cols="20" rows="5"></textarea>
                         <p id="description_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="description">Imagen</label>
-                        <input type="file" accept="image/*" class="form-control" id="image" name="image" placeholder="Imagen">
+                        <label for="description">Image</label>
+                        <input type="file" accept="image/*" class="form-control" id="image" name="image" placeholder="Image">
                         <p id="imagen_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="measure_unit">Unidad de Medida</label>
+                        <label for="measure_unit">Measurement Unit</label>
                         <select class="form-control" name="measure_unit" id="measure_unit">
                             <option value="">Select</option>
                         </select>
                         <p id="measure_unit_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="category_product">Categoría</label>
+                        <label for="category_product">Category</label>
                         <select class="form-control" name="category_product" id="category_product">
                             <option value="">Select</option>
                         </select>
@@ -97,13 +98,14 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="addProduct();">Registrar</button>
-                <button type="button" class="btn btn-danger" onclick="closeCreationModal();">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="addProduct();">Register</button>
+                <button type="button" class="btn btn-danger" onclick="closeCreationModal();">Cancel</button>
                 <button id="close_modal_creation" type="button" hidden data-dismiss="modal">Hide</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <button id="openUpdateModal" type="button" hidden data-toggle="modal" data-target="#updateModal"></button>
 
@@ -114,34 +116,33 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>Edición de Indicador <span id="categoria"></span> </h2>
+                <h2>Indicator Edition <span id="categoria"></span> </h2>
                 <form method="POST" id="update_form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" class="form-control" id="id_name" name="name" placeholder="Nombre">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="id_name" name="name" placeholder="Name">
                         <p id="name_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="description">Descripción</label>
-                        <textarea name="description" id="id_description" class="form-control" placeholder="Descripción" cols="20"
-                            rows="5"></textarea>
+                        <label for="description">Description</label>
+                        <textarea name="description" id="id_description" class="form-control" placeholder="Description" cols="20" rows="5"></textarea>
                         <p id="description_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="image">Imagen Actual</label>
+                        <label for="image">Current Image</label>
                         <label id="actual_image"></label>
-                        <input type="file" accept="image/*" class="form-control" id="id_image" name="image" placeholder="Imagen">
+                        <input type="file" accept="image/*" class="form-control" id="id_image" name="image" placeholder="Image">
                         <p id="imagen_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="measure_unit">Unidad de Medida</label>
+                        <label for="measure_unit">Measurement Unit</label>
                         <select class="form-control" name="measure_unit" id="id_measure_unit">
                         </select>
                         <p id="measure_unit_error" class="error"></p>
                     </div>
                     <div class="form-group">
-                        <label for="category_product">Categoría</label>
+                        <label for="category_product">Category</label>
                         <select class="form-control" name="category_product" id="id_category_product">
                         </select>
                         <p id="category_product_error" class="error"></p>
@@ -149,13 +150,14 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="updateProduct();">Editar</button>
-                <button type="button" class="btn btn-danger" onclick="closeUpdateModal();">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="updateProduct();">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="closeUpdateModal();">Cancel</button>
                 <button id="close_modal_update" type="button" hidden data-dismiss="modal">Hide</button>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock body %}
 

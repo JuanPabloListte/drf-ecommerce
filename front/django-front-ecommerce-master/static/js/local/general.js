@@ -116,7 +116,7 @@ function fetchCreateUpdate(url, data, update=false, files=false){
             }
         })
         .catch(function(error){
-            console.log("RESPUESTA EN CATCH");
+            console.log("RESPONSE IN CATCH");
             console.log(error);
         });
     }else{
@@ -143,7 +143,7 @@ function fetchCreateUpdate(url, data, update=false, files=false){
             }
         })
         .catch(function(error){
-            console.log("RESPUESTA EN CATCH");
+            console.log("RESPONSE IN CATCH");
             console.log(error);
         });
     }
@@ -167,7 +167,7 @@ function fetchDelete(url){
         alert(data.message);     
     })
     .catch(function(error){
-        console.log("RESPUESTA EN CATCH");
+        console.log("RESPONSE IN CATCH");
         console.log(error);
     });
 }
