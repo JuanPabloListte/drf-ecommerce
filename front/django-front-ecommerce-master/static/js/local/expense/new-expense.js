@@ -19,7 +19,7 @@ function searchSupplier(){
     let cuil = document.getElementById('cuil_or_business_name').value;
 
     if(cuil === ''){
-        alert('Debe ingresar un CUIL.')
+        alert('Must enter a CUIL.')
     }else{
         let found = document.getElementById('supplier_found');
         found.classList.remove('hide');
@@ -51,7 +51,7 @@ function searchSupplier(){
 
         })
         .catch(function(error){
-            console.log("RESPUESTA EN CATCH");
+            console.log("RESPONSE IN CATCH");
             console.log(error);
         });
     }
@@ -82,7 +82,7 @@ function loadPaymentType(){
         }
     })
     .catch(function(error){
-        console.log("RESPUESTA EN CATCH");
+        console.log("RESPONSE IN CATCH");
         console.log(error);
     });
 }
@@ -111,7 +111,7 @@ function loadVoucherType(){
         }
     })
     .catch(function(error){
-        console.log("RESPUESTA EN CATCH");
+        console.log("RESPONSE IN CATCH");
         console.log(error);
     });
 }
@@ -140,7 +140,7 @@ function loadProducts(){
         }
     })
     .catch(function(error){
-        console.log("RESPUESTA EN CATCH");
+        console.log("RESPONSE IN CATCH");
         console.log(error);
     });
 }
@@ -189,7 +189,7 @@ function addNewSupplier(){
         }
     })
     .catch(function(error){
-        console.log("RESPUESTA EN CATCH");
+        console.log("RESPONSE IN CATCH");
         console.log(error);
     });
 }
@@ -236,7 +236,7 @@ function addNewExpense(){
         }
     })
     .catch(function(error){
-        console.log("RESPUESTA EN CATCH");
+        console.log("RESPONSE IN CATCH");
         console.log(error);
     });
 }

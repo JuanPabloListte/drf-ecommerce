@@ -13,18 +13,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-8">
-                    <h2>Listado de Unidades de Medida</h2>
-                    <p>Categorías de Productos registradas disponibles.</p>
+                    <h2>List of Units of Measurement</h2>
+                    <p>Registered product categories available.</p>
                 </div>
                 <div class="col-lg-4">
                     <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal"
                         data-target="#creationModal">
-                        Agregar
+                        Add
                     </button>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="table-responsive">
         <table id="table" 
             data-sort-class="table-active"
@@ -40,15 +41,16 @@
             <thead>
                 <tr>
                     <th data-field="id" data-visible="false">ID</th>
-                    <th data-field="description">Nombre</th>
+                    <th data-field="description">Name</th>
                     <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents"
                         data-footer-formatter="footerFormatter">
-                        Acciones
+                        Actions
                     </th>
                 </tr>
             </thead>
         </table>
     </div>
+    
 </div>
 
 <div class="modal fade" id="creationModal" role="dialog">

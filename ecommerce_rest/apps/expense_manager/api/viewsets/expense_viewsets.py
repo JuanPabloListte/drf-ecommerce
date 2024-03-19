@@ -18,7 +18,9 @@ class ExpenseViewSet(viewsets.GenericViewSet):
             Q(cuil__iexact=cuil_or_business_name) |
             Q(business_name__iexact=cuil_or_business_name)
         ).first()
-        if supplier.exists():
+        if supplier:
             supplier_serializer = SupplierSerializer(supplier)
             return Response(supplier_serializer.data, status=status.HTTP_200_OK)
-        return Response({'error': 'Supplier not found'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'mensaje': 'Supplier not found.'
+        }, status=status.HTTP_400_BAD_REQUEST)

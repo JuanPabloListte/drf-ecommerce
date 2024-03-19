@@ -81,18 +81,18 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Productos</a>
+                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Products</a>
                                     <ul class="collapse dropdown-header-top">
-                                        <li><a href=" {% url 'category_product' %} ">Categoría de Productos</a></li>
-                                        <li><a href=" {% url 'measure_unit' %} ">Unidades de Medida</a></li>
-                                        <li><a href=" {% url 'indicator' %} ">Indicador</a></li>
-                                        <li><a href=" {% url 'product' %} ">Productos</a></li>
+                                        <li><a href=" {% url 'category_product' %} ">Category Products</a></li>
+                                        <li><a href=" {% url 'measure_unit' %} ">Measure Unit</a></li>
+                                        <li><a href=" {% url 'indicator' %} ">Indicator</a></li>
+                                        <li><a href=" {% url 'product' %} ">Products</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demoevent" href="#">Gastos</a>
+                                <li><a data-toggle="collapse" data-target="#demoevent" href="#">Expenses</a>
                                     <ul id="demoevent" class="collapse dropdown-header-top">
-                                        <li><a href="{% url 'new_expense' %}">Registrar Facturas</a></li>
-                                        <li><a href="view-email.html">Listar Facturas</a></li>
+                                        <li><a href="{% url 'new_expense' %}">Register Invoices</a></li>
+                                        <li><a href="view-email.html">List Invoices</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -109,26 +109,22 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li class="active"><a data-toggle="tab" href="#products"><i
-                                    class="notika-icon notika-menus"></i>
-                                Productos</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-mail"></i>Gastos</a>
-                        </li>
+                        <li class="active"><a data-toggle="tab" href="#products"><i class="notika-icon notika-menus"></i> Products</a></li>
+                        <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-mail"></i> Expenses</a></li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="products" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href=" {% url 'category_product' %} ">Categoría de Productos</a></li>
-                                <li><a href=" {% url 'measure_unit' %} ">Unidades de Medida</a></li>
-                                <li><a href=" {% url 'indicator' %} ">Indicador</a></li>
-                                <li><a href=" {% url 'product' %} ">Productos</a></li>
+                                <li><a href="{% url 'category_product' %}">Product Categories</a></li>
+                                <li><a href="{% url 'measure_unit' %}">Measurement Units</a></li>
+                                <li><a href="{% url 'indicator' %}">Indicator</a></li>
+                                <li><a href="{% url 'product' %}">Products</a></li>
                             </ul>
                         </div>
                         <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{% url 'new_expense' %}">Registrar Facturas</a></li>
-                                <li><a href="view-email.html">Listar Facturas</a></li>
+                                <li><a href="{% url 'new_expense' %}">Register Invoices</a></li>
+                                <li><a href="view-email.html">List Invoices</a></li>
                             </ul>
                         </div>
                     </div>
@@ -136,6 +132,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Main Menu area End-->
     <!-- Start Status area -->
     <div class="notika-status-area">
