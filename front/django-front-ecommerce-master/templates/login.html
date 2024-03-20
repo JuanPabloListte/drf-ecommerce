@@ -144,7 +144,7 @@
         function login(){
             let username = $('#id_username').val();
             let password = $('#id_password').val();
-
+        
             fetch('http://127.0.0.1:8001/login/', {
                 method: 'POST',
                 headers: {
@@ -155,14 +155,20 @@
                     password: password
                 })
             }).then((response) => {
+                if (!response.ok) {
+                    throw new Error('Invalid username or password');
+                }
                 return response.json();
             }).then((data) => {
                 window.localStorage.setItem('token', data.token);
-                window.location.href = '/';
+                window.location.href = 'homepage/';
             }).catch((err) => {
-                console.log(err);
+                console.error(err);
+                // Mostrar un mensaje de error al usuario
+                alert('Invalid username or password');
             });
         }
+        
     </script>
 </body>
 

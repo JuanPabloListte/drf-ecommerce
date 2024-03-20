@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework_simplejwt.views import TokenObtainPairView
 from apps.users.models import User
 from apps.users.api.serializers import CustomTokenObtainPairSerializer, CustomUserSerializer
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from rest_framework.generics import GenericAPIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -13,17 +13,14 @@ from rest_framework_simplejwt.tokens import RefreshToken
 class Login(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
     
-    def post(self, request: Request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         username = request.data.get('username', '')
         password = request.data.get('password', '')
-        user = authenticate(
-            username = username,
-            password = password
-        )
+        user = authenticate(username=username, password=password)
         
-        if user:
+        if user is not None:
+            login(request, user)
             login_serializer = self.serializer_class(data=request.data)
-            
             if login_serializer.is_valid():
                 user_serializer = CustomUserSerializer(user)
                 return Response({
@@ -32,8 +29,10 @@ class Login(TokenObtainPairView):
                     'user': user_serializer.data,
                     'message': 'Successful Login'
                 }, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'Invalid token data'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
             return Response({'error': 'Incorrect username or password'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error': 'Incorrect username or password'}, status=status.HTTP_400_BAD_REQUEST)
     
 class Logout(GenericAPIView):
     def post(self, request: Request, *args, **kwargs):
