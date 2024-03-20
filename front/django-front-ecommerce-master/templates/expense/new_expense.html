@@ -99,99 +99,101 @@
                             <label class="hrzn-fm">Product</label>
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                            <select id="product" name="product" class="form-control" data-placeholder="Select a Product...">
+                            <select id="product" name="product" class="form-control">
+                                <option value="">Select a Product...</option>
                             </select>
                             <p id="product_error" class="error"></p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         
-        <div class="form-example-int form-horizental mg-t-15">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <label class="hrzn-fm">Invoice Type</label>
-                    </div>
-                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                        <select class="form-control" name="voucher" id="voucher"
-                            data-placeholder="Select an Invoice Type...">
-                        </select>
-                        <p id="voucher_error" class="error"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-example-int form-horizental mg-t-15">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <label class="hrzn-fm">Payment Method</label>
-                    </div>
-                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                        <select class="form-control" name="payment_type" id="payment_type"
-                            data-placeholder="Select a Payment Method...">
-                        </select>
-                        <p id="payment_type_error" class="error"></p>
+        
+            <div class="form-example-int form-horizental mg-t-15">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Invoice Type</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <select class="form-control" name="voucher" id="voucher">
+                                <option value="">Select an Invoice Type...</option>
+                            </select>
+                            <p id="voucher_error" class="error"></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="form-example-int form-horizental mg-t-15">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <label class="hrzn-fm">Quantity</label>
+            <div class="form-example-int form-horizental mg-t-15">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Payment Method</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <select class="form-control" name="payment_type" id="payment_type">
+                                <option value="">Select a Payment Method...</option>
+                            </select>
+                            <p id="payment_type_error" class="error"></p>
+                        </div>
                     </div>
-                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                        <div class="nk-int-st">
-                            <input id="quantity" value="0" name="quantity" type="number" min="0"
-                                class="form-control">
+                </div>
+            </div>
+            <div class="form-example-int form-horizental mg-t-15">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Quantity</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input id="quantity" value="0" name="quantity" type="number" min="0" class="form-control" 
+                                       oninput="validarNumeros(this)">
                                 <p id="quantity_error" class="error"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="form-example-int form-horizental mg-t-15">
-            <div class="form-group">
+            
+            <div class="form-example-int form-horizental mg-t-15">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Unit Price</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input id="unit_price" value="0" name="unit_price" type="number" min="0" class="form-control" 
+                                       oninput="validarNumeros(this)">
+                                <p id="unit_price_error" class="error"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-example-int form-horizental mg-t-15">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Total</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input id="total" value="0" name="total" type="number" min="0" class="form-control" readonly>
+                                <p id="total_error" class="error"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-example-int mg-t-15" style="padding-bottom: 30px;">
                 <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <label class="hrzn-fm">Unit Price</label>
                     </div>
                     <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                        <div class="nk-int-st">
-                            <input id="unit_price" value="0" name="unit_price" type="number" min="0"
-                                class="form-control">
-                            <p id="unit_price_error" class="error"></p>
-                        </div>
+                        <button class="btn btn-success notika-btn-success waves-effect" onclick="addNewExpense();">Register</button>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-example-int form-horizental mg-t-15">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <label class="hrzn-fm">Total</label>
-                    </div>
-                    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                        <div class="nk-int-st">
-                            <input id="total" value="0" name="total" type="number" min="0" class="form-control">
-                            <p id="total_error" class="error"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-example-int mg-t-15">
-            <div class="row">
-                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                </div>
-                <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                    <button class="btn btn-success notika-btn-success waves-effect" onclick="addNewExpense();">Register</button>
                 </div>
             </div>
         </div>
@@ -257,4 +259,40 @@
     $('#date').datepicker({ dateFormat: 'yy-mm-dd' });
 </script>
 <script src="{% static 'js/local/expense/new-expense.js' %}"></script>
+<script>
+    function validarNumeros(input) {
+        var valorOriginal = input.value;
+
+        input.value = input.value.replace(/[^0-9.]/g, '');
+
+        if (valorOriginal !== input.value) {
+            input.setSelectionRange(input.value.length, input.value.length);
+        }
+
+        if (isNaN(input.value)) {
+            document.getElementById(input.id + "_error").textContent = "Debe ingresar solo números";
+        } else {
+            document.getElementById(input.id + "_error").textContent = "";
+        }
+
+        calcularTotal();
+    }
+
+    // Función para calcular el total
+    function calcularTotal() {
+        // Obtener los valores de cantidad y precio unitario
+        var cantidad = parseFloat(document.getElementById('quantity').value) || 0;
+        var precioUnitario = parseFloat(document.getElementById('unit_price').value) || 0;
+
+        // Calcular el total
+        var total = cantidad * precioUnitario;
+
+        // Mostrar el total en el campo correspondiente
+        document.getElementById('total').value = total.toFixed(2);
+    }
+</script>
+
+
+
+
 {% endblock extra_js %}

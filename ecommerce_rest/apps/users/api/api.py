@@ -68,6 +68,8 @@ class UserViewSet(viewsets.GenericViewSet):
             return Response({'message': 'Password updated successfully'}, status=status.HTTP_200_OK)
         return Response({'message': 'Invalid password',
                          'errors': password_serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
+    
 
 # @api_view(['GET', 'POST'])
 # def user_api_view(request):

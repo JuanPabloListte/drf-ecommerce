@@ -161,7 +161,7 @@ function addNewSupplier(){
     }
     temp_body = JSON.stringify(data)
 
-    fetch(base_API + 'expense/expense/new_suplier/',{
+    fetch(base_API + 'expense/expense/new_supplier/',{
         method: 'POST',
         headers: temp_headers,
         body: temp_body
@@ -240,3 +240,4 @@ function addNewExpense(){
         console.log(error);
     });
 }
+
