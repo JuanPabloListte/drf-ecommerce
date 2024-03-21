@@ -194,6 +194,18 @@ function addNewSupplier(){
     });
 }
 
+
+function clearFields() {
+    document.getElementById('voucher_number').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('product').value = '';
+    document.getElementById('voucher').value = '';
+    document.getElementById('payment_type').value = '';
+    document.getElementById('quantity').value = '0';
+    document.getElementById('unit_price').value = '0';
+    document.getElementById('total').value = '0';
+}
+
 function addNewExpense(){
     let data = {
         'supplier': id_supplier,
@@ -232,7 +244,8 @@ function addNewExpense(){
         }else{
             hideErrors();
             hideForm();
-            alert(data.message);        
+            alert(data.message);
+            clearFields();        
         }
     })
     .catch(function(error){
