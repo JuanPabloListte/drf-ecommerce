@@ -45,6 +45,7 @@ class Product(BaseModel):
     measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE, verbose_name='Measure Unit', null=True)
     category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Category Product', null=True)
     
+    
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
@@ -52,3 +53,14 @@ class Product(BaseModel):
     def __str__(self):
         return self.name
 
+    @property
+    def stock(self):
+        from django.db.models import Sum
+        from apps.expense_manager.models import Expense
+        
+        expenses = Expense.objects.filter(
+            product=self,
+            state=True
+        ).aggregate(Sum('quantity'))
+        
+        return expenses
