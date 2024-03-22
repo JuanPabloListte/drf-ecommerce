@@ -32,6 +32,3 @@ class TestSetUp(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.token)
         return super().setUp()
     
-    
-    def test_(self):
-        print(self.token)
